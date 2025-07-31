@@ -1,0 +1,12 @@
+body{
+    background: white;
+    overflow-x: hidden;
+}
+#home-page{
+position: absolute;
+top: 0;
+background-image: url(svgs/fundo-preto.svg);
+width: 100%;
+height: auto;
+z-index: 1;
+}
