@@ -95,12 +95,36 @@ section {
 }
 
 .nav-link {
+    position: relative; /* necessário para o ::after funcionar */
     text-decoration: none;
     color: white;
     font-family: 'titulo';
     font-size: 1rem;
     z-index: 1;
+    transition: color 0.2s linear;
 }
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px; /* distância da linha para o texto */
+    width: 0%;
+    height: 2px;
+    background-color: var(--cor-primaria);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--cor-primaria);
+     filter: drop-shadow(0 0 5px var(--cor-primaria));
+}
+
+.nav-link:hover::after {
+    width: 100%; 
+    filter: drop-shadow(0 0 5px var(--cor-primaria));
+}
+
 
 .nav-contato {
     position: fixed;
@@ -274,12 +298,20 @@ section {
 #sobre{
     overflow: hidden;
 }
-.fundo-verde{
+.fundo-verde {
     position: absolute;
     width: 100%;
     opacity: 0.4;
     z-index: -1;
+    animation: FOGO 10s infinite ease-in-out;
 }
+
+@keyframes FOGO {
+    0% { opacity: 0.4; }
+    50% { opacity: 0.8; } /* mais intenso no meio */
+    100% { opacity: 0.4; }
+}
+
 
 .container-hand {
     position: relative;
