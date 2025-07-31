@@ -205,11 +205,25 @@ section {
     width: 30%;
     z-index: 1;
     transition: 1.5s cubic-bezier(0.23, 1, 0.320, 1);
+    animation: MEXE 10s ease-in-out;
 }
 
-.cubo:hover {
-    transform: rotate(190deg);
-    transition: 1s all ease;
+@keyframes MEXE {
+  0% {
+    transform: translateY(50%) translateX(0);
+  }
+  25% {
+    transform: translateY(48%) translateX(1%);
+  }
+  50% {
+    transform: translateY(50%) translateX(0.5%);
+  }
+  75% {
+    transform: translateY(52%) translateX(-1%);
+  }
+  100% {
+    transform: translateY(50%) translateX(0);
+  }
 }
 
 .scroll {
