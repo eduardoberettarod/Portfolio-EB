@@ -269,6 +269,17 @@ section {
 .container-corrente {
     position: relative;
 }
+/*seção sobre*/
+
+#sobre{
+    overflow: hidden;
+}
+.fundo-verde{
+    position: absolute;
+    width: 100%;
+    opacity: 0.4;
+    z-index: -1;
+}
 
 .container-hand {
     position: relative;
@@ -279,31 +290,59 @@ section {
     height: auto;
     width: 30%;
     right: -2.5%;
-    transform: rotate(180deg) rotate3D(90deg);
+    margin-block: -6%;
+    z-index: -1;
+    animation: PEGAR infinite 15s ease-in-out;
+    transform-origin: center;
 }
+
+@keyframes PEGAR {
+    0% {
+        transform: translateY(0%) translateX(0%) rotate(0deg) scale(1);
+    }
+    40% {
+        transform: translateY(10%) translateX(5%) rotate(8deg) scale(0.98);
+    }
+    60% { /* simula "apertar" */
+        transform: translateY(12%) translateX(6%) rotate(10deg) scale(1.2);
+    }
+    100% {
+        transform: translateY(0%) translateX(0%) rotate(0deg) scale(1);
+    }
+}
+
 
 
 .titulo-sobre {
     font-family: 'titulo';
     color: white;
     text-align: justify;
-    font-size: 10rem;
+    font-size: 6rem;
 }
 
 .texto-sobre {
     position: absolute;
     font-family: 'texto';
+    margin-top: var(--margem-padraoY);
     color: white;
     font-size: 1.5rem;
-
+    text-align: justify;
 }
 
 .container-sobre {
     position: relative;
-  margin-inline: var(--margem-padraoX);
+    margin-inline: var(--margem-padraoX);
     /* esquerda e direita */
     margin-block: 5%;
     /* topo e baixo */
     text-align: left;
     width: 45%;
+}
+.curriculo{
+    position: absolute;
+    width: 40px;
+    height: auto;
+    right: 20%;
+    margin-block: 20%;
+    filter: drop-shadow(0 0 6px var(--cor-primaria));
 }
