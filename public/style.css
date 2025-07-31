@@ -1,12 +1,44 @@
-body{
-    background: white;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cor-fundo);
     overflow-x: hidden;
 }
-#home-page{
-position: absolute;
-top: 0;
-background-image: url(svgs/fundo-preto.svg);
-width: 100%;
-height: auto;
-z-index: 1;
+
+:root {
+    --cor-primaria: #4dff89;
+    --cor-fundo: #00150b;
+    --margem-padraoX: 5rem;
+    --margem-padraoY: 3.5rem;
+}
+
+/*PÁGINA INICIAL*/
+.fundo {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.fundo-retangulo {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background: transparent;
+    border: 10px solid var(--cor-primaria);
+    width: 97%;
+    height: 95%;
+}
+
+.logo-link {
+    position: fixed;
+    margin-block: var(--margem-padraoY);   /* topo e baixo */
+    margin-inline: var(--margem-padraoX);  /* esquerda e direita */
 }
