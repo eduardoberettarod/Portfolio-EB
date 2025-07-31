@@ -14,6 +14,11 @@ html {
     /* Para o scroll ser suave */
 }
 
+section {
+    width: 100%;
+    height: 100vh;
+}
+
 @font-face {
     font-family: 'titulo';
     src: url(Orbitron-Regular.ttf) format('opentype');
@@ -51,7 +56,7 @@ html {
     left: 50%;
     transform: translate(-50%, 50%);
     background: transparent;
-    border: 7px solid var(--cor-primaria);
+    border: 6.5px solid var(--cor-primaria);
     width: 97%;
     height: 95%;
     z-index: -1;
@@ -116,7 +121,8 @@ html {
     padding: 10px 50px 10px 20px;
     /* espaço pro texto e seta */
     border-radius: 15px;
-    position: absolute;
+    position: fixed;
+    z-index: 2;
     /* necessário pro ::before */
 }
 
@@ -163,6 +169,8 @@ html {
     bottom: 50%;
     transform: translateY(50%);
     filter: blur(50px);
+    z-index: 1;
+    pointer-events: none;
 }
 
 .cubo {
@@ -172,4 +180,95 @@ html {
     transform: translateY(50%);
     width: 30%;
     z-index: 1;
+    transition: 1.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.cubo:hover {
+    transform: rotate(190deg);
+    transition: 1s all ease;
+}
+
+.scroll {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cor-segundaria);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    bottom: var(--margem-padraoY);
+    border: 1px solid var(--cor-primaria);
+    opacity: 0.4;
+    transition: 0.4s linear;
+    z-index: 2;
+}
+
+.scroll::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    /* seta a 20px da borda do botão */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: url("svgs/seta.svg") no-repeat center;
+    background-size: contain;
+}
+
+.scroll p {
+    position: absolute;
+    left: 54%;
+    top: -60%;
+    font-size: 0.85rem;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'titulo';
+    letter-spacing: 0.2rem;
+}
+
+.scroll:hover,
+.social-link:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px var(--cor-primaria));
+}
+
+.social-container {
+    position: absolute;
+    left: var(--margem-padraoX);
+    bottom: var(--margem-padraoY);
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    z-index: 2;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: var(--cor-segundaria);
+    border: 1px solid var(--cor-primaria);
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px transparent;
+    z-index: 2;
+    opacity: 0.4;
+}
+
+.social-icon {
+    width: 24px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    /* isso transforma SVG preto em azul neon */
+    z-index: 2;
+}
+
+.corrente {
+    position: absolute;
+    height: auto;
+    width: 40%;
+}
+
+.container-corrente {
+    position: relative;
 }
