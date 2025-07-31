@@ -9,11 +9,29 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    scroll-behavior: smooth;
+    /* Para o scroll ser suave */
+}
+
+@font-face {
+    font-family: 'titulo';
+    src: url(Orbitron-Regular.ttf) format('opentype');
+}
+
+@font-face {
+    font-family: texto;
+    src: url(Lato-Regular.ttf) format('opentype');
+}
+
 :root {
     --cor-primaria: #4dff89;
+    --cor-segundaria: #1f4023;
     --cor-fundo: #00150b;
     --margem-padraoX: 5rem;
+    /* esquerda e direita */
     --margem-padraoY: 3.5rem;
+    /* topo e baixo */
 }
 
 /*PÁGINA INICIAL*/
@@ -23,7 +41,8 @@ body {
     left: 0;
     width: 100%;
     height: auto;
-    z-index: 1;
+    z-index: 0;
+    pointer-events: none;
 }
 
 .fundo-retangulo {
@@ -32,13 +51,125 @@ body {
     left: 50%;
     transform: translate(-50%, 50%);
     background: transparent;
-    border: 10px solid var(--cor-primaria);
+    border: 7px solid var(--cor-primaria);
     width: 97%;
     height: 95%;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .logo-link {
     position: fixed;
-    margin-block: var(--margem-padraoY);   /* topo e baixo */
-    margin-inline: var(--margem-padraoX);  /* esquerda e direita */
+    margin-block: var(--margem-padraoY);
+    /* topo e baixo */
+    margin-inline: var(--margem-padraoX);
+    /* esquerda e direita */
+    z-index: 1;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+.nav-links {
+    position: fixed;
+    list-style: none;
+    margin-block: var(--margem-padraoY);
+    right: 50%;
+    transform: translateX(50%);
+    display: flex;
+    gap: 60px;
+    z-index: 10;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    background: transparent;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-family: 'titulo';
+    font-size: 1rem;
+    z-index: 1;
+}
+
+.nav-contato {
+    position: fixed;
+    right: var(--margem-padraoX);
+    top: var(--margem-padraoY);
+    z-index: 1;
+}
+
+
+.contato-btn {
+    text-decoration: none;
+    color: black;
+    font-family: 'titulo';
+    font-weight: 700;
+    font-size: 1rem;
+    border: 1.5px solid var(--cor-segundaria);
+    background: var(--cor-primaria);
+    padding: 10px 50px 10px 20px;
+    /* espaço pro texto e seta */
+    border-radius: 15px;
+    position: absolute;
+    /* necessário pro ::before */
+}
+
+.contato-btn::before {
+    content: "";
+    position: absolute;
+    right: 20px;
+    /* seta a 20px da borda do botão */
+    top: 50%;
+    transform: translateY(-50%) rotate(-135deg);
+    width: 20px;
+    height: 20px;
+    background: url("svgs/seta.svg") no-repeat center;
+    background-size: contain;
+    filter: brightness(0);
+}
+
+.text-home {
+    position: absolute;
+    left: var(--margem-padraoX);
+    top: 40%;
+    z-index: 2;
+}
+
+.title {
+    font-family: 'titulo';
+    font-size: 7.5rem;
+    color: white;
+    z-index: 2;
+}
+
+.subtitle {
+    font-family: 'titulo';
+    font-size: 3.5rem;
+    color: var(--cor-primaria);
+    z-index: 2;
+}
+
+.bola {
+    position: absolute;
+    width: 35%;
+    height: auto;
+    right: 0;
+    bottom: 50%;
+    transform: translateY(50%);
+    filter: blur(50px);
+}
+
+.cubo {
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+    transform: translateY(50%);
+    width: 30%;
+    z-index: 1;
 }
