@@ -246,9 +246,6 @@ section {
 .social-link {
     display: inline-block;
     padding: 10px;
-    border-radius: 50px;
-    background-color: var(--cor-segundaria);
-    border: 1px solid var(--cor-primaria);
     transition: all 0.3s ease;
     box-shadow: 0 0 5px transparent;
     z-index: 2;
@@ -271,4 +268,28 @@ section {
 
 .container-corrente {
     position: relative;
+}
+
+.titulo-sobre {
+    font-family: 'titulo';
+    color: white;
+    text-align: justify;
+    font-size: 10rem;
+}
+.texto-sobre{
+    position: absolute;
+    font-family: 'texto';
+    color: white;
+    font-size: 1.5rem;
+
+}
+
+.container-sobre {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-block: 5%;
+    /* topo e baixo */
+    text-align: left;
+    width: 45%;
 }
