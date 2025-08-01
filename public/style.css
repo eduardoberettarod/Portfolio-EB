@@ -69,7 +69,7 @@ section {
     /* topo e baixo */
     margin-inline: var(--margem-padraoX);
     /* esquerda e direita */
-    z-index: 1;
+    z-index: 10;
 }
 
 .logo {
@@ -91,7 +91,7 @@ section {
     background: transparent;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    z-index: 1;
+    z-index: 10;
 }
 
 .nav-link {
@@ -130,7 +130,7 @@ section {
     position: fixed;
     right: var(--margem-padraoX);
     top: var(--margem-padraoY);
-    z-index: 1;
+    z-index: 10;
 }
 
 
@@ -146,7 +146,7 @@ section {
     /* espaço pro texto e seta */
     border-radius: 15px;
     position: fixed;
-    z-index: 2;
+    z-index: 10;
     /* necessário pro ::before */
 }
 
@@ -372,7 +372,7 @@ section {
     margin-top: var(--margem-padraoY);
     color: white;
     font-size: 1.5rem;
-    text-align: justify;
+    text-align: left;
 }
 
 .container-sobre {
@@ -384,11 +384,65 @@ section {
     text-align: left;
     width: 45%;
 }
-.curriculo{
+/* Container do ícone e tooltip */
+.curriculo-wrapper {
     position: absolute;
-    width: 40px;
-    height: auto;
     right: 20%;
     margin-block: 20%;
+    display: inline-block;
+}
+
+/* Tooltip */
+.curriculo-wrapper::after {
+    content: "Baixar Currículo";
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.curriculo-wrapper:hover::after {
+    opacity: 1;
+}
+
+/* Ícone com animação de brasa */
+.curriculo {
+    width: 40px;
+    height: auto;
     filter: drop-shadow(0 0 6px var(--cor-primaria));
+    animation: brasa 10s ease-in-out infinite;
+    cursor: pointer;
+}
+
+/* Animação de brasa com mais movimento */
+@keyframes brasa {
+    0% {
+        transform: translateY(0) translateX(0);
+        filter: drop-shadow(0 0 6px var(--cor-primaria));
+    }
+    25% {
+        transform: translateY(-8px) translateX(2px);
+        filter: drop-shadow(0 0 10px var(--cor-primaria));
+    }
+    50% {
+        transform: translateY(0) translateX(-2px);
+        filter: drop-shadow(0 0 14px var(--cor-primaria));
+    }
+    75% {
+        transform: translateY(-6px) translateX(1px);
+        filter: drop-shadow(0 0 10px var(--cor-primaria));
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+        filter: drop-shadow(0 0 6px var(--cor-primaria));
+    }
 }
