@@ -38,6 +38,8 @@ section {
     /* esquerda e direita */
     --margem-padraoY: 3.5rem;
     /* topo e baixo */
+    --bg-card: rgba(255, 255, 255, 0.08);
+    --borda-card: rgba(255, 255, 255, 0.15);
 }
 
 /*PÁGINA INICIAL*/
@@ -317,6 +319,7 @@ section {
 .corrente {
     position: absolute;
     height: auto;
+    bottom: -900px;
     width: 45%;
     right: -17%;
     opacity: 0.65;
@@ -1054,4 +1057,108 @@ section {
     margin-inline: var(--margem-padraoX);
     margin-block: var(--margem-padraoY);
     font-size: 6.5rem;
+}
+
+.container-contato {
+    display: flex;
+    align-items: flex-start;
+    /* alinha topo do form e cards */
+    flex-wrap: wrap;
+    /* para mobile empilhar */
+}
+
+/* Card de Formulário */
+.card-form {
+    background: var(--bg-card);
+    border: 1px solid var(--borda-card);
+    border-radius: 16px;
+    padding: 25px;
+    width: 400px;
+    backdrop-filter: blur(6px);
+    margin-inline: var(--margem-padraoX);
+}
+
+.card-form h1 {
+    color: white;
+    font-family: 'titulo';
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+}
+
+.card-form label {
+    display: block;
+    color: white;
+    font-family: 'texto';
+    font-size: 1rem;
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
+.card-form input,
+.card-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid var(--borda-card);
+    background: transparent;
+    color: white;
+    font-family: 'texto';
+    font-size: 0.9rem;
+}
+
+.card-form textarea {
+    resize: none;
+    height: 100px;
+}
+
+.card-form input:focus,
+.card-form textarea:focus {
+    outline: none;
+    border: 1px solid var(--cor-primaria);
+}
+
+.card-form button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    background: var(--cor-primaria);
+    color: black;
+    font-family: 'texto';
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 1rem;
+}
+
+.card-form button:hover {
+    background: #4dff887c;
+}
+
+/* Cards da Direita */
+.cards-lado {
+    display: flex;
+    flex-direction: column;
+    /* empilha um abaixo do outro */
+    gap: 20px;
+    flex: 1;
+    /* para ocupar o espaço restante */
+    min-width: 250px;
+    /* evita ficar muito estreito */
+    align-self: flex-end;
+    /* empurra para a base do container */
+}
+
+.card-info {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--borda-card);
+    color: white;
+    font-family: 'texto';
+    text-align: center;
+    width: 50%;
 }
