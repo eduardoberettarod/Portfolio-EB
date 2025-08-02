@@ -166,6 +166,11 @@ section {
     filter: brightness(0);
 }
 
+.contato-btn:hover {
+    filter: drop-shadow(0 0 15px var(--cor-primaria));
+    background: #8cffb2;
+}
+
 .text-home {
     position: absolute;
     left: var(--margem-padraoX);
@@ -206,8 +211,7 @@ section {
     transform: translateY(50%);
     width: 30%;
     z-index: 1;
-    transition: 1.5s cubic-bezier(0.23, 1, 0.320, 1);
-    animation: MEXE 10s ease-in-out;
+    animation: MEXE 6s ease-in-out infinite;
 }
 
 @keyframes MEXE {
@@ -215,22 +219,27 @@ section {
         transform: translateY(50%) translateX(0);
     }
 
-    25% {
-        transform: translateY(48%) translateX(1%);
+    20% {
+        transform: translateY(49.5%) translateX(0.8%);
     }
 
-    50% {
-        transform: translateY(50%) translateX(0.5%);
+    40% {
+        transform: translateY(50.5%) translateX(0.4%);
     }
 
-    75% {
-        transform: translateY(52%) translateX(-1%);
+    60% {
+        transform: translateY(50.3%) translateX(-0.8%);
+    }
+
+    80% {
+        transform: translateY(49.7%) translateX(-0.3%);
     }
 
     100% {
         transform: translateY(50%) translateX(0);
     }
 }
+
 
 .scroll {
     position: absolute;
@@ -310,7 +319,7 @@ section {
     width: 45%;
     right: -17%;
     opacity: 0.65;
-    filter: blur(2.5px);
+    filter: blur(1.5px);
     pointer-events: none;
 }
 
@@ -322,14 +331,6 @@ section {
 
 #sobre {
     overflow: hidden;
-}
-
-.fundo-verde {
-    position: absolute;
-    width: 100%;
-    opacity: 0.4;
-    z-index: -1;
-    animation: FOGO 10s infinite ease-in-out;
 }
 
 @keyframes FOGO {
@@ -478,9 +479,190 @@ section {
 }
 
 /*seção projetos*/
-#projetos {
-    background-color: white;
+.circulo:first-of-type {
+    position: absolute;
+    background: transparent;
+    left: -17%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 75px solid var(--cor-segundaria);
+    opacity: 0.45;
+    filter: blur(5px) drop-shadow(0 0 15px var(--cor-segundaria));
+    z-index: -1;
 }
+
+.circulo:nth-last-of-type(1) {
+    position: absolute;
+    background: transparent;
+    margin-top: 25%;
+    right: -14%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 80px solid var(--cor-segundaria);
+    opacity: 0.45;
+    filter: blur(5px) drop-shadow(0 0 15px var(--cor-segundaria));
+    z-index: -1;
+}
+
+.titulo-projetos {
+    font-family: 'titulo';
+    color: white;
+    margin-inline: var(--margem-padraoX);
+    margin-block: var(--margem-padraoY);
+    font-size: 6.5rem;
+}
+
+.projeto-item {
+    margin-top: 2rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+}
+
+.projeto-item h2 {
+    position: relative;
+    color: white;
+    font-family: 'texto';
+    margin-block: 1.5rem;
+    text-align: left;
+}
+
+.projeto-item p {
+    color: white;
+    font-family: 'texto';
+    text-align: left;
+    font-size: 1.1rem;
+    padding-bottom: 3rem;
+}
+
+.botao-fullscreen {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    width: 25px;
+    /* largura do botão */
+    height: 25px;
+    /* altura do botão */
+    background: url('svgs/full.svg') center/contain no-repeat;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    /* sem fundo extra */
+    padding: 0;
+    filter: invert(79%) sepia(75%) saturate(746%) hue-rotate(78deg) brightness(103%) contrast(103%);
+}
+
+.ver-github {
+    position: absolute;
+    color: black;
+    width: 40%;
+    right: 1rem;
+    top: 18rem;
+    text-decoration: none;
+    font-family: 'texto';
+    background: var(--cor-primaria);
+    padding: 10px 50px 10px 15px;
+    border-radius: 5px;
+    border: 1px solid var(--cor-segundaria);
+}
+
+.ver-github::before {
+    content: "";
+    position: absolute;
+    /* seta a 20px da borda do botão */
+    right: 20px;
+    width: 20px;
+    height: 20px;
+    background: url("svgs/github.svg") no-repeat center;
+    background-size: contain;
+}
+
+/* Wrapper da imagem */
+.projeto-img-wrapper {
+    position: relative;
+    display: inline-block;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Imagem */
+.projeto-img-wrapper img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Gradiente - atrás */
+.projeto-img-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+/* Ícone display - na frente */
+.projeto-img-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('svgs/display.svg') center/50px no-repeat;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+/* Hover apenas na imagem */
+.projeto-img-wrapper:hover img {
+    transform: scale(1.03);
+}
+
+.projeto-img-wrapper:hover::before,
+.projeto-img-wrapper:hover::after {
+    opacity: 1;
+}
+
+.cards-projetos {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 por linha */
+    gap: 3rem;
+    /* espaçamento entre eles */
+    margin: var(--margem-padraoX);
+    justify-items: center;
+    /* centraliza na coluna */
+}
+
+/* Tablet: 2 por linha */
+@media (max-width: 1024px) {
+    .cards-projetos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Celular: 1 por linha */
+@media (max-width: 768px) {
+    .cards-projetos {
+        grid-template-columns: 1fr;
+    }
+}
+
+
 
 /* seção serviços */
 .container-linha {
@@ -539,6 +721,7 @@ section {
     font-family: 'titulo';
     color: white;
     font-size: 2rem;
+    margin-top: var(--margem-padraoY);
 }
 
 /* ícones lado a lado */
