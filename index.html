@@ -85,8 +85,54 @@
           <p>
             Plataforma educacional interativa sobre cibersegurança, com recursos 3D e animações avançadas.
           </p>
-          <button class="botao-fullscreen"></button>
+          <!-- Botão que abre (exemplo para 1 projeto) -->
+          <button class="botao-fullscreen" data-img="public/imgs/cyberlab.png" data-title="CyberLab"
+            data-mes-ano="Maio 2025"
+            data-desc="Plataforma educacional interativa sobre cibersegurança, com recursos 3D e animações avançadas."
+            data-link="https://eduardoberettarod.github.io/CyberLab/"
+            data-tecnologias='["html","css","javascript","threejs"]'>
+          </button>
+
         </div>
+
+        <div id="lightbox" class="lightbox">
+          <div class="lightbox-caixa">
+            <button class="fechar" aria-label="Fechar lightbox">&times;</button>
+            <div class="card-projeto">
+              <!-- Coluna esquerda -->
+              <div class="col-esquerda">
+                <img id="lb-img" src="" alt="" />
+                <a id="lb-link" href="#" target="_blank" class="btn-previa">
+                  Prévia
+                  <img src="public/svgs/display.svg" alt="Ícone Prévia" class="icon-previa" />
+                </a>
+              </div>
+
+              <!-- Coluna direita -->
+              <div class="col-direita">
+                <div class="info nome">
+                  <h3>Nome do projeto</h3>
+                  <h2 id="lb-titulo"></h2>
+                </div>
+                <div class="info ano-mes">
+                  <h3>Data de criação</h3>
+                  <p id="lb-ano"></p>
+                </div>
+                <div class="info descricao">
+                  <h3>Descrição</h3>
+                  <p id="lb-desc"></p>
+                </div>
+                <div class="info tecnologias" id="lb-tecnologias-container">
+                  <h3>Tecnologias utilizadas</h3>
+                  <div id="lb-tecnologias">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
         <div class="projeto-item">
           <a href="https://eduardoberettarod.github.io/RastroUrbanoGitDesktop/" target="_blank"
@@ -98,6 +144,7 @@
             no GitHub</a>
           <p>Loja virtual responsiva com design moderno e interações dinâmicas.</p>
           <button class="botao-fullscreen"></button>
+
         </div>
 
         <div class="projeto-item">

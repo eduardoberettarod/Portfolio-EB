@@ -17,6 +17,7 @@ html {
 section {
     width: 100%;
     height: 100vh;
+
 }
 
 @font-face {
@@ -479,6 +480,12 @@ section {
 }
 
 /*seção projetos*/
+#projetos {
+    overflow-x: hidden;
+    max-width: 100%;
+    min-height: 100vh;
+}
+
 .circulo:first-of-type {
     position: absolute;
     background: transparent;
@@ -492,19 +499,7 @@ section {
     z-index: -1;
 }
 
-.circulo:nth-last-of-type(1) {
-    position: absolute;
-    background: transparent;
-    margin-top: 25%;
-    right: -14%;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    border: 80px solid var(--cor-segundaria);
-    opacity: 0.45;
-    filter: blur(5px) drop-shadow(0 0 15px var(--cor-segundaria));
-    z-index: -1;
-}
+
 
 .titulo-projetos {
     font-family: 'titulo';
@@ -524,16 +519,20 @@ section {
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-items: center;
     border: 1px solid rgba(255, 255, 255, 0.15);
     text-decoration: none;
+    max-width: 450px;
+    padding-top: 25px;
 }
 
 .projeto-item h2 {
     position: relative;
-    color: white;
+    color: var(--cor-primaria);
     font-family: 'texto';
     margin-block: 1.5rem;
-    text-align: left;
+    right: 50%;
+    transform: translateX(50%);
 }
 
 .projeto-item p {
@@ -544,21 +543,180 @@ section {
     padding-bottom: 3rem;
 }
 
+/* Botão fullscreen */
+/* Botão fullscreen */
 .botao-fullscreen {
     position: absolute;
     bottom: 1rem;
     right: 1rem;
     width: 25px;
-    /* largura do botão */
     height: 25px;
-    /* altura do botão */
     background: url('svgs/full.svg') center/contain no-repeat;
     border: none;
     cursor: pointer;
     background-color: transparent;
-    /* sem fundo extra */
     padding: 0;
     filter: invert(79%) sepia(75%) saturate(746%) hue-rotate(78deg) brightness(103%) contrast(103%);
+}
+
+/* Overlay com fundo preto e blur */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Caixa do conteúdo */
+.lightbox-caixa {
+    background: #111;
+    color: white;
+    padding: 35px;
+    border-radius: 15px;
+    max-width: 1075px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+}
+
+/* Card do projeto dentro do lightbox */
+.card-projeto {
+    display: flex;
+    width: 1000px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Coluna esquerda */
+.col-esquerda {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.col-esquerda img {
+    max-width: 100%;
+    max-height: 70%;
+    border-radius: 10px;
+}
+
+/* Botão Prévia */
+.btn-previa {
+    font-size: 1.2rem;
+    font-family: 'texto';
+    display: inline-flex;
+    gap: 0.7rem;
+    background: var(--cor-primaria);
+    color: black;
+    padding: 10px 185px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-previa:hover {
+    transform: scale(1.05);
+    background: #00e68a;
+}
+
+.icon-previa {
+    position: relative;
+    top: 50%;
+    transform: translateY(-60%);
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
+}
+
+/* Coluna direita */
+.col-direita {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+/* Cada info tem fundo vidro */
+.info {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: left;
+}
+
+.info h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'texto';
+}
+
+.info h3 {
+    margin: 0 0 0.25rem 0;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--cor-primaria);
+    font-family: 'texto';
+}
+
+.info p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-family: 'texto';
+}
+
+/* Tags de tecnologia */
+.tag-tech {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.8rem;
+    background: var(--cor-primaria);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-right: 0.4rem;
+    border: none;
+    color: black;
+}
+
+.tag-tech img {
+    width: 18px;
+    height: 18px;
+}
+
+/* Botão fechar */
+.fechar {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 32px;
+    cursor: pointer;
+    color: white;
+    background: transparent;
+    border: none;
+    line-height: 1;
+    padding: 0;
+    font-weight: bold;
+    z-index: 10;
 }
 
 .ver-github {
@@ -885,6 +1043,11 @@ section {
 }
 
 /*seção contato*/
+#contato {
+    scrollbar-width: none;
+    max-height: 100%;
+}
+
 .titulo-contato {
     font-family: 'titulo';
     color: white;
