@@ -237,8 +237,8 @@ section {
     left: 50%;
     transform: translateX(-50%);
     background: var(--cor-segundaria);
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     bottom: var(--margem-padraoY);
     border: 1px solid var(--cor-primaria);
@@ -254,8 +254,8 @@ section {
     /* seta a 20px da borda do botão */
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 20px;
-    height: 20px;
+    width: 10px;
+    height: 10px;
     background: url("svgs/seta.svg") no-repeat center;
     background-size: contain;
 }
@@ -263,8 +263,8 @@ section {
 .scroll p {
     position: absolute;
     left: 54%;
-    top: -60%;
-    font-size: 0.85rem;
+    top: -70%;
+    font-size: 0.6rem;
     transform: translateX(-50%);
     color: white;
     font-family: 'titulo';
@@ -307,7 +307,11 @@ section {
 .corrente {
     position: absolute;
     height: auto;
-    width: 40%;
+    width: 45%;
+    right: -17%;
+    opacity: 0.65;
+    filter: blur(2.5px);
+    pointer-events: none;
 }
 
 .container-corrente {
@@ -670,7 +674,8 @@ section {
     width: 35%;
     font-family: 'texto';
 }
-#diferente{
+
+#diferente {
     width: 37%;
 }
 
@@ -696,11 +701,11 @@ section {
     filter: invert(79%) sepia(75%) saturate(746%) hue-rotate(78deg) brightness(103%) contrast(103%);
 }
 
-
-
-
-
 /*seção contato*/
-#contato {
-    background-color: white;
+.titulo-contato {
+    font-family: 'titulo';
+    color: white;
+    margin-inline: var(--margem-padraoX);
+    margin-block: var(--margem-padraoY);
+    font-size: 6.5rem;
 }
