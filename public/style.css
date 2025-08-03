@@ -2,12 +2,52 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: var(--cor-primaria) transparent;
 }
 
 body {
     background: var(--cor-fundo);
     overflow-x: hidden;
+
 }
+
+.cursor-light {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: var(--cor-primaria);
+    border-radius: 50%;
+    pointer-events: none;
+    /* não interfere com cliques */
+    opacity: 0.4;
+    filter: blur(100px);
+    z-index: 9999;
+}
+
+/* Scrollbar - Chrome, Edge e Safari */
+::-webkit-scrollbar {
+    width: 8px;
+    /* largura */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    /* fundo do trilho */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--cor-primaria);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00cc66;
+    /* cor ao passar o mouse */
+}
+
 
 html {
     scroll-behavior: smooth;
@@ -312,7 +352,6 @@ section {
     width: 24px;
     height: auto;
     filter: brightness(0) invert(1);
-    /* isso transforma SVG preto em azul neon */
     z-index: 2;
 }
 
@@ -325,6 +364,16 @@ section {
     opacity: 0.65;
     filter: blur(1.5px);
     pointer-events: none;
+}
+
+.orbita {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.65;
+    filter: blur(1.5px);
+    pointer-events: none;
+    bottom: -750px;
 }
 
 .container-corrente {
@@ -352,7 +401,6 @@ section {
     }
 }
 
-
 .container-hand {
     position: relative;
 }
@@ -360,13 +408,14 @@ section {
 .hand {
     position: absolute;
     height: auto;
-    width: 30%;
+    width: 50%;
     right: -2.5%;
-    margin-block: -6%;
+    margin-block: -19%;
     z-index: -1;
     animation: PEGAR infinite 15s ease-in-out;
     transform-origin: center;
 }
+
 
 @keyframes PEGAR {
     0% {
@@ -396,14 +445,75 @@ section {
     font-size: 6.5rem;
 }
 
-.texto-sobre {
-    position: absolute;
-    font-family: 'texto';
-    margin-top: var(--margem-padraoY);
+.card-sobre {
+    background: var(--bg-card);
+    border: 1px solid var(--borda-card);
+    border-radius: 12px;
+    padding: 1.5rem;
     color: white;
+    max-width: 800px;
+    /* ajusta largura máxima */
+    margin: 0 auto;
+    /* centraliza */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-top: var(--margem-padraoY);
+}
+
+.texto-sobre {
+    font-family: 'texto';
     font-size: 1.5rem;
     text-align: left;
+    line-height: 1.6;
+    /* deixa mais legível */
 }
+
+.titulo-soft-skills {
+    font-family: 'titulo';
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1rem;
+    margin-top: var(--margem-padraoY);
+}
+
+.soft-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.skill-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--borda-card);
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+    color: white;
+    font-family: 'texto';
+    font-size: 1rem;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-card img {
+    width: 25px;
+    height: auto;
+    transition: transform 0.2s ease-in-out, filter 0.2s ease-in-out;
+    filter: invert(79%) sepia(75%) saturate(746%) hue-rotate(78deg) brightness(103%) contrast(103%);
+    opacity: 0.4;
+}
+
+.skill-card i {
+    font-size: 1.2rem;
+    color: var(--cor-primaria);
+}
+
+.skill-card:hover {
+    transform: scale(1.05);
+    border-color: var(--cor-primaria);
+}
+
 
 .container-sobre {
     position: relative;
@@ -415,44 +525,8 @@ section {
     width: 45%;
 }
 
-/* Container do ícone e tooltip */
-.curriculo-wrapper {
-    position: absolute;
-    right: 20%;
-    margin-block: 20%;
-    display: inline-block;
-}
-
-/* Tooltip */
-.curriculo-wrapper::after {
-    content: "Baixar Currículo";
-    position: absolute;
-    bottom: 120%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.85);
-    color: white;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.curriculo-wrapper:hover::after {
-    opacity: 1;
-}
 
 /* Ícone com animação de brasa */
-.curriculo {
-    width: 40px;
-    height: auto;
-    filter: drop-shadow(0 0 6px var(--cor-primaria));
-    animation: brasa 10s ease-in-out infinite;
-    cursor: pointer;
-}
 
 /* Animação de brasa com mais movimento */
 @keyframes brasa {
@@ -546,7 +620,6 @@ section {
     padding-bottom: 3rem;
 }
 
-/* Botão fullscreen */
 /* Botão fullscreen */
 .botao-fullscreen {
     position: absolute;
@@ -686,25 +759,6 @@ section {
     font-family: 'texto';
 }
 
-/* Tags de tecnologia */
-.tag-tech {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.4rem 0.8rem;
-    background: var(--cor-primaria);
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    margin-right: 0.4rem;
-    border: none;
-    color: black;
-}
-
-.tag-tech img {
-    width: 18px;
-    height: 18px;
-}
 
 /* Botão fechar */
 .fechar {
@@ -1139,26 +1193,85 @@ section {
 }
 
 /* Cards da Direita */
+/* Container dos cards à direita */
 .cards-lado {
+    position: relative;
     display: flex;
     flex-direction: column;
     /* empilha um abaixo do outro */
     gap: 20px;
     flex: 1;
-    /* para ocupar o espaço restante */
-    min-width: 250px;
-    /* evita ficar muito estreito */
-    align-self: flex-end;
-    /* empurra para a base do container */
+    min-width: 300px;
+    align-self: end;
+    /* alinha verticalmente na célula */
 }
 
+/* Estilo base de todos os cards */
 .card-info {
     background: var(--bg-card);
+    border: 1px solid var(--borda-card);
     border-radius: 16px;
     padding: 20px;
-    border: 1px solid var(--borda-card);
     color: white;
     font-family: 'texto';
-    text-align: center;
-    width: 50%;
+}
+
+.card-info h1 {
+    font-family: 'titulo';
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+/* Botão de download */
+.btn-download {
+    display: inline-block;
+    padding: 10px 20px;
+    background: var(--cor-primaria);
+    color: #111;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-download:hover {
+    background: #00cc66;
+}
+
+/* Redes sociais */
+.redes {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.redes-contato {
+    color: white;
+    font-family: 'titulo';
+}
+
+.redes img {
+    width: 30px;
+    height: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.6;
+}
+
+.redes img:hover {
+    opacity: 1;
+    filter: drop-shadow(0 0 5px var(--cor-primaria));
+}
+
+.redes a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+#cv {
+    width: max-content;
+}
+
+#contato {
+    overflow-x: hidden;
 }
