@@ -382,9 +382,7 @@ section {
 
 /*seção sobre*/
 
-#sobre {
-    overflow: hidden;
-}
+
 
 @keyframes FOGO {
     0% {
@@ -410,7 +408,7 @@ section {
     height: auto;
     width: 50%;
     right: -2.5%;
-    margin-block: -19%;
+    margin-block: 8%;
     z-index: -1;
     animation: PEGAR infinite 15s ease-in-out;
     transform-origin: center;
@@ -555,11 +553,7 @@ section {
 }
 
 /*seção projetos*/
-#projetos {
-    overflow-x: hidden;
-    max-width: 100%;
-    min-height: 100vh;
-}
+
 
 .circulo:first-of-type {
     position: absolute;
@@ -580,7 +574,7 @@ section {
     font-family: 'titulo';
     color: white;
     margin-inline: var(--margem-padraoX);
-    margin-block: var(--margem-padraoY);
+    margin-block: 6rem;
     font-size: 6.5rem;
 }
 
